@@ -1,0 +1,25 @@
+<h1> This is To-Do Site </h1>
+
+<ul>
+    <li> Temorary todo item A </li>
+    <li> Temorary todo item B </li>
+</ul>
+
+<ul>
+    {%for todo_item in all_items%}
+        <li>{{todo_item.content}}
+         <form action="/deleteTodo/{{todo_item.id}}/" 
+               style="display: inline;"
+               method="post">{% csrf_token %}
+            <input type="submit" value="Delete"/>
+         </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<!--- #-->
+<form action="/addTodo/" method="post">{% csrf_token %}
+    <input type="Text" name="content"/>
+    <input type="submit" value="add"/>
+</form>
+
